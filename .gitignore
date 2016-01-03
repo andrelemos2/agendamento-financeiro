@@ -1,0 +1,8 @@
+.idea/
+.metadata/
+.settings/
+.iml
+.classpath
+.project
+.idea/uiDesigner.xml
+target/

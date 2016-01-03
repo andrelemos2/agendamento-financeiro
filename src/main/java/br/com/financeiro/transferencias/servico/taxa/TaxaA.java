@@ -1,10 +1,14 @@
-package br.com.financeiro.transferencias.servico;
+package br.com.financeiro.transferencias.servico.taxa;
+
+import br.com.financeiro.transferencias.modelo.Agendamento;
+import br.com.financeiro.transferencias.servico.calculo.Taxa;
 
 import java.math.BigDecimal;
 
-import br.com.financeiro.transferencias.modelo.Agendamento;
-
-public class TaxaA implements Taxa{
+/*
+Operacoes do tipo A tem uma taxa de valor 2 mais 3 porcento do valor da transferencia
+ */
+public class TaxaA implements Taxa {
 
 	@Override
 	public BigDecimal calculaValor(Agendamento agendamento) {

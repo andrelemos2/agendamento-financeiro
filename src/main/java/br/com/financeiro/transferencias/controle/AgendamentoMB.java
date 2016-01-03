@@ -1,58 +1,80 @@
 package br.com.financeiro.transferencias.controle;
 
+import br.com.financeiro.transferencias.dao.AgendamentoFacade;
 import br.com.financeiro.transferencias.modelo.Agendamento;
-import br.com.financeiro.transferencias.servico.Taxa;
-import br.com.financeiro.transferencias.servico.TipoOperacao;
+import br.com.financeiro.transferencias.servico.calculo.Taxa;
+import br.com.financeiro.transferencias.servico.calculo.TipoOperacao;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
+import javax.faces.bean.SessionScoped;
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.List;
 
 @ManagedBean
-@ViewScoped
+@SessionScoped
 public class AgendamentoMB implements Serializable {
 
-	/**
-	 *
-	 */
-	private static final long serialVersionUID = 4691750034939360870L;
-	
-	private Agendamento agendamento = new Agendamento();
-	private List<Agendamento> agendamentos = new ArrayList<Agendamento>();
+    /**
+     *
+     */
+    private static final long serialVersionUID = 4691750034939360870L;
 
-	public AgendamentoMB() {
-	}
-	
-	public Agendamento getAgendamento() {
-		return agendamento;
-	}
+    private Agendamento agendamento;
+    private List<Agendamento> agendamentos;
 
-	public void setAgendamento(Agendamento agendamento) {
-		this.agendamento = agendamento;
-	}
+    private AgendamentoFacade dao;
 
-	public List<Agendamento> getAgendamentos() {
-		return agendamentos;
-	}
+    public AgendamentoFacade getAgendamentoImpl() {
+        if (dao == null) {
+            dao = new AgendamentoFacade();
+        }
+        return dao;
+    }
 
-	public void setAgendamentos(List<Agendamento> agendamentos) {
-		this.agendamentos = agendamentos;
-	}
-	
-	public TipoOperacao[] getTipoOperacaoValues() {
-	    return TipoOperacao.values();
-	  }
+    public Agendamento getAgendamento() {
+        if (agendamento == null) {
+            agendamento = new Agendamento();
+        }
+        return agendamento;
+    }
 
-	public void agendar() {
-		TipoOperacao tipoOperacao = agendamento.getTipoOperacao();
-		Taxa taxa = tipoOperacao.getTaxa();
-		BigDecimal valor = taxa.calculaValor(agendamento);
-		agendamento.setValor(valor);
-		agendamentos.add(agendamento);
-		agendamento = new Agendamento();
-	}
+    public void setAgendamento(Agendamento agendamento) {
+        this.agendamento = agendamento;
+    }
+
+    public String listarAgendamentos() {
+        try {
+            TipoOperacao tipoOperacao = agendamento.getTipoOperacao();
+            Taxa taxa = tipoOperacao.getTaxa();
+            BigDecimal valor = taxa.calculaValor(agendamento);
+            agendamento.setValor(valor);
+            getAgendamentoImpl().adicionar(agendamento);
+            carregarAgendantos();
+            apagarAgendamento();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "agendamentos.xhtml";
+    }
+
+    public List<Agendamento> getTodosAgendamentos() {
+        if (agendamentos == null) {
+            carregarAgendantos();
+        }
+        return agendamentos;
+    }
+
+    private void carregarAgendantos() {
+        agendamentos = getAgendamentoImpl().buscar();
+    }
+
+    public void apagarAgendamento() {
+        agendamento = new Agendamento();
+    }
+
+    public TipoOperacao[] getTipoOperacaoValues() {
+        return TipoOperacao.values();
+    }
 
 }

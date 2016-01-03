@@ -1,25 +1,30 @@
-package br.com.financeiro.transferencias.servico;
+package br.com.financeiro.transferencias.servico.calculo;
+
+import br.com.financeiro.transferencias.servico.taxa.TaxaA;
+import br.com.financeiro.transferencias.servico.taxa.TaxaB;
+import br.com.financeiro.transferencias.servico.taxa.TaxaC;
+import br.com.financeiro.transferencias.servico.taxa.TaxaD;
 
 public enum TipoOperacao {
-	A("A") {
+	A("Taxa A") {
 		@Override
 		public Taxa getTaxa() {
 			return new TaxaA();
 		}
 	},
-	B("B") {
+	B("Taxa B") {
 		@Override
 		public Taxa getTaxa() {
 			return new TaxaB();
 		}
 	},
-	C("C") {
+	C("Taxa C") {
 		@Override
 		public Taxa getTaxa() {
 			return new TaxaC();
 		}
 	},
-	D("D") {
+	D("Taxa D") {
 		@Override
 		public Taxa getTaxa() {
 			return new TaxaD();

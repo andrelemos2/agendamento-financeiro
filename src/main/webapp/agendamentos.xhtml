@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+    <title>Agendamento Financeiro - Transferência Bancária</title>
+    <h:outputText value="Transferências Realizadas"/>
+</h:head>
+<f:view>
+    <h:form>
+        <h:panelGrid>
+
+            <h:dataTable id="tableAgendamentos"
+                         value="#{agendamentoMB.todosAgendamentos}" var="agendamentos"
+                         title="Agendamentos Cadastradas" border="1" rows="10">
+
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Conta De"/>
+                    </f:facet>
+                    <h:outputText value="#{agendamentos.contaDe}"/>
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Conta Para"/>
+                    </f:facet>
+                    <h:outputText value="#{agendamentos.contaPara}"/>
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Valor"/>
+                    </f:facet>
+                    <h:outputText value="#{agendamentos.valor}">
+                        <f:convertNumber groupingUsed="true" pattern="#0.00" minFractionDigits="2"/>
+                    </h:outputText>
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Taxa"/>
+                    </f:facet>
+                    <h:outputText value="#{agendamentos.tipoOperacao.nome}"/>
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Data do Agendamento"/>
+                    </f:facet>
+                    <h:outputText value="#{agendamentos.dataAgendamento}">
+                        <f:converter converterId="localDateFacesConverter"/>
+                    </h:outputText>
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Data do Cadastro"/>
+                    </f:facet>
+                    <h:outputText value="#{agendamentos.dataCadastro}">
+                        <f:converter converterId="localDateFacesConverter"/>
+                    </h:outputText>
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Descrição"/>
+                    </f:facet>
+                    <h:outputText value="#{agendamentos.descricao}">
+                    </h:outputText>
+                </h:column>
+
+            </h:dataTable>
+        </h:panelGrid>
+        <h:commandLink value="Novo Agendamento" action="agendamento"/>
+    </h:form>
+</f:view>
+</html>

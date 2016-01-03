@@ -1,6 +1,6 @@
 package br.com.financeiro.transferencias.modelo;
 
-import br.com.financeiro.transferencias.servico.TipoOperacao;
+import br.com.financeiro.transferencias.servico.calculo.TipoOperacao;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -11,11 +11,9 @@ public class Agendamento {
 	private String contaDe;
 	private String contaPara;
 	private LocalDate dataAgendamento;
-	private LocalDate dataCadastro;
 	private BigDecimal valor;
 	private TipoOperacao tipoOperacao;
-
-	
+	private String descricao;
 
 	public String getContaDe() {
 		return contaDe;
@@ -45,10 +43,6 @@ public class Agendamento {
 		return LocalDate.now();
 	}
 
-	public void setDataCadastro(LocalDate dataCadastro) {
-		this.dataCadastro = dataCadastro;
-	}
-
 	public BigDecimal getValor() {
 		return valor;
 	}
@@ -61,11 +55,19 @@ public class Agendamento {
 		return tipoOperacao;
 	}
 
+	public String getDescricao() {
+		return descricao;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+
 	public void setTipoOperacao(TipoOperacao tipoOperacao) {
 		this.tipoOperacao = tipoOperacao;
 	}
 
-	public int getIntervaloDias(){
+	public int getIntervaloDias() {
 		Period intervalo = Period.between(getDataAgendamento(), getDataCadastro());
 
 		return intervalo.getDays();

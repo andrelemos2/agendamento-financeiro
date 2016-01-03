@@ -1,4 +1,4 @@
-package br.com.financeiro.transferencias.servico;
+package br.com.financeiro.transferencias.servico.calculo;
 
 import java.math.BigDecimal;
 
