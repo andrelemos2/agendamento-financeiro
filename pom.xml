@@ -58,6 +58,7 @@
 
 	<!-- BUILD CONFIGURATION -->
 	<build>
+			<finalName>agendamento-financeiro</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
