@@ -5,7 +5,7 @@ Simples Projeto Agendamento Financeiro (Transferência Bancária)
 Construindo na sua máquina
 ==========================
 
-Se você quiser ver a aplicação na sua máquina é somente necessário importar como projeto MAVEN.
+Se você quiser ver a aplicação na sua máquina é somente necessário importar como projeto MAVEN na sua IDE.
 
 Técnologias utilizadas
 ==========================
