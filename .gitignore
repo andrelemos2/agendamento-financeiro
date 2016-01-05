@@ -1,8 +1,8 @@
 .idea/
+.idea/uiDesigner.xml
+agendamento-financeiro.iml
 .metadata/
 .settings/
-.iml
 .classpath
 .project
-.idea/uiDesigner.xml
 target/
