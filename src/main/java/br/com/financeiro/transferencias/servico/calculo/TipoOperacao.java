@@ -1,32 +1,32 @@
 package br.com.financeiro.transferencias.servico.calculo;
 
-import br.com.financeiro.transferencias.servico.taxa.TaxaA;
-import br.com.financeiro.transferencias.servico.taxa.TaxaB;
-import br.com.financeiro.transferencias.servico.taxa.TaxaC;
-import br.com.financeiro.transferencias.servico.taxa.TaxaD;
+import br.com.financeiro.transferencias.servico.taxas.TaxaA;
+import br.com.financeiro.transferencias.servico.taxas.TaxaB;
+import br.com.financeiro.transferencias.servico.taxas.TaxaC;
+import br.com.financeiro.transferencias.servico.taxas.TaxaD;
 
 public enum TipoOperacao {
 	A("Taxa A") {
 		@Override
-		public Taxa getTaxa() {
+		public CalculoTaxa getTaxa() {
 			return new TaxaA();
 		}
 	},
 	B("Taxa B") {
 		@Override
-		public Taxa getTaxa() {
+		public CalculoTaxa getTaxa() {
 			return new TaxaB();
 		}
 	},
 	C("Taxa C") {
 		@Override
-		public Taxa getTaxa() {
+		public CalculoTaxa getTaxa() {
 			return new TaxaC();
 		}
 	},
 	D("Taxa D") {
 		@Override
-		public Taxa getTaxa() {
+		public CalculoTaxa getTaxa() {
 			return new TaxaD();
 		}
 	};
@@ -41,5 +41,5 @@ public enum TipoOperacao {
 		return nome;
 	}
 
-	public abstract Taxa getTaxa();
+	public abstract CalculoTaxa getTaxa();
 }

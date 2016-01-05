@@ -1,77 +1,79 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
 <h:head>
-    <title>Agendamento Financeiro - Transferência Bancária</title>
+	<title>Agendamento Financeiro - Transferência Bancária</title>
 </h:head>
 <h:body>
-    <h:form>
-        <h:panelGrid id="panel" columns="6">
-            <f:facet name="header">
-                <h:outputText value="Transferências"/>
-            </f:facet>
+	<h:form>
+		<h:panelGrid id="panel" columns="6">
+			<f:facet name="header">
+				<h:outputText value="Transferências" />
+			</f:facet>
 
 
-            <h:outputLabel value="Conta De:"/>
-            <h:inputText id="inpContaDe"
-                         value="#{agendamentoMB.agendamento.contaDe}" size="20"
-                         required="true" requiredMessage="Campo Obrigatório"/>
-            <h:message for="inpContaDe"/>
+			<h:outputLabel value="Conta De:" />
+			<h:inputText id="inpContaDe"
+				value="#{agendamentoMB.agendamento.contaDe}" size="20"
+				pt:placeholder="XXXXX-X"
+				required="true" requiredMessage="Campo Obrigatório" />
+			<h:message for="inpContaDe" />
 
-            <h:outputLabel value="Conta Para:"/>
-            <h:inputText id="inpContaPara"
-                         value="#{agendamentoMB.agendamento.contaPara}" size="20"
-                         required="true" requiredMessage="Campo Obrigatório"/>
-            <h:message for="inpContaPara"/>
-
-
-            <h:outputLabel value="Valor:"/>
-            <h:inputText id="inpValor" value="#{agendamentoMB.agendamento.valor}"
-                         size="20"
-                         converterMessage="Valor incorreto">>
-                <f:convertNumber groupingUsed="true" pattern="#0.00" minFractionDigits="2"/>
-                <h:message for="inpValor"/>
-            </h:inputText>
-
-            <h:outputLabel value="Tipo Taxa:"/>
-            <h:selectOneMenu id="inpTipoOperacao"
-                             value="#{agendamentoMB.agendamento.tipoOperacao}">
-                <f:selectItems value="#{agendamentoMB.tipoOperacaoValues}"
-                               var="tipoOperacoes" itemValue="#{tipoOperacoes}"
-                               itemLabel="#{tipoOperacoes.nome}"/>
-            </h:selectOneMenu>
+			<h:outputLabel value="Conta Para:" />
+			<h:inputText id="inpContaPara"
+				value="#{agendamentoMB.agendamento.contaPara}" size="20"
+				pt:placeholder="XXXXX-X"
+				required="true" requiredMessage="Campo Obrigatório" />
+			<h:message for="inpContaPara" />
 
 
-            <h:outputLabel value="Data Agendamento:"/>
-            <h:inputText id="inpDateAgendamento"
-                         value="#{agendamentoMB.agendamento.dataAgendamento}"
-                         pt:placeholder="dd/MM/yyyy"
-                         size="10"
-                         required="true"
-                         requiredMessage="É necessário informar a data do agendamento."
-                         converterMessage="A data deve estar no formato dd/MM/aaaa">
+			<h:outputLabel value="Valor:" />
+			<h:inputText id="inpValor" value="#{agendamentoMB.agendamento.valor}"
+				size="20" converterMessage="Valor incorreto">>
+                <f:convertNumber groupingUsed="true" pattern="#0.00"
+					minFractionDigits="2" />
+				<h:message for="inpValor" />
+			</h:inputText>
 
-                <f:converter converterId="localDateFacesConverter"
-                             for="inpDateAgendamento"/>
-            </h:inputText>
-
-            <h:outputLabel value="Descricao:"/>
-            <h:inputTextarea id="inpDescricao"
-                             value="#{agendamentoMB.agendamento.descricao}"
-                             size="10"></h:inputTextarea>
+			<h:outputLabel value="Tipo Taxa:" />
+			<h:selectOneMenu id="inpTipoOperacao"
+				value="#{agendamentoMB.agendamento.tipoOperacao}">
+				<f:selectItems value="#{agendamentoMB.tipoOperacaoValues}"
+					var="tipoOperacoes" itemValue="#{tipoOperacoes}"
+					itemLabel="#{tipoOperacoes.nome}" />
+			</h:selectOneMenu>
 
 
-            <f:facet name="footer">
-                <h:panelGroup style="display:block; text-align:left">
-                    <h:commandButton value="Agendar" action="#{agendamentoMB.listarAgendamentos}"></h:commandButton>
-                </h:panelGroup>
-            </f:facet>
-        </h:panelGrid>
-    </h:form>
+			<h:outputLabel value="Data Agendamento:" />
+			<h:inputText id="inpDateAgendamento"
+				value="#{agendamentoMB.agendamento.dataAgendamento}" size="10"
+				pt:placeholder="dd/MM/yyyy"
+				required="true"
+				requiredMessage="É necessário informar a data do agendamento."
+				converterMessage="A data deve estar no formato dd/MM/aaaa">
+				<f:converter converterId="localDateFacesConverter"
+					for="inpDateAgendamento" />
+			</h:inputText>
 
-    <h:form><h:commandLink value="Agendamento Realizados" action="agendamentos"/></h:form>
+			<h:outputLabel value="Descricao:" />
+			<h:inputTextarea id="inpDescricao"
+				value="#{agendamentoMB.agendamento.descricao}" size="10"></h:inputTextarea>
+
+
+			<f:facet name="footer">
+				<h:panelGroup style="display:block; text-align:left">
+					<h:commandButton value="Agendar"
+						action="#{agendamentoMB.listarAgendamentos}"></h:commandButton>
+				</h:panelGroup>
+			</f:facet>
+		</h:panelGrid>
+	</h:form>
+
+	<h:form>
+		<h:commandLink value="Agendamento Realizados" action="agendamentos" />
+	</h:form>
 </h:body>
 </html>

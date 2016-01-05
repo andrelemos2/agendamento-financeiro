@@ -1,8 +1,7 @@
-package br.com.financeiro.transferencias.servico.taxa;
+package br.com.financeiro.transferencias.servico.taxas;
 
 import br.com.financeiro.transferencias.modelo.Agendamento;
-import br.com.financeiro.transferencias.servico.calculo.Taxa;
-
+import br.com.financeiro.transferencias.servico.calculo.CalculoTaxa;
 import java.math.BigDecimal;
 /*
 Operacoes do tipo C tem uma taxa regressiva conforme a data de agendamento:
@@ -14,10 +13,12 @@ Operacoes do tipo C tem uma taxa regressiva conforme a data de agendamento:
             até 10 dias da data de cadastro ­ 7.4
             até  5 dias da data de cadastro ­ 8.3
  */
-public class TaxaC implements Taxa {
+public class TaxaC implements CalculoTaxa {
+	
+	private static final BigDecimal DIVIDE_100 = new BigDecimal("100");
 
 	@Override
-	public BigDecimal calculaValor(Agendamento agendamento) {
+	public BigDecimal calculandoValor(Agendamento agendamento) {
 
 		BigDecimal porcentagemAdicional = BigDecimal.ONE;
 
@@ -36,7 +37,6 @@ public class TaxaC implements Taxa {
 								else if (agendamento.getIntervaloDias() > 30)
 									porcentagemAdicional = new BigDecimal("1.2");
 
-		return agendamento.getValor().add(porcentagemAdicional.divide(new BigDecimal("100")));
+		return agendamento.getValor().add(porcentagemAdicional.divide(DIVIDE_100));
 	}
-
 }
