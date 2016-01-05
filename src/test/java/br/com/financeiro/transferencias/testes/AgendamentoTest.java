@@ -1,9 +1,11 @@
-package br.com.financeiro.transferencias.builder;
+package br.com.financeiro.transferencias.testes;
 
 import static org.junit.Assert.assertEquals;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import org.junit.Test;
+
+import br.com.financeiro.transferencias.builder.AgendamentoBuilder;
 import br.com.financeiro.transferencias.modelo.Agendamento;
 import br.com.financeiro.transferencias.servico.calculo.TipoOperacao;
 

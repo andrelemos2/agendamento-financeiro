@@ -10,9 +10,8 @@ Operacoes do tipo A tem uma taxa de valor 2 mais 3 porcento do valor da transfer
  */
 public class TaxaA  implements CalculoTaxa{
 	
-	private static final BigDecimal DIVIDE_100 = new BigDecimal("100");
 	private static final BigDecimal VALOR_TAXA_ADICIONAL = new BigDecimal("2");
-	private static final BigDecimal PORCENTAGEM_ADICIONAL = new BigDecimal("3").divide(DIVIDE_100);
+	private static final BigDecimal PORCENTAGEM_ADICIONAL = new BigDecimal("0.03");
 	
 	@Override
 	public BigDecimal calculandoValor(Agendamento agendamento) {
