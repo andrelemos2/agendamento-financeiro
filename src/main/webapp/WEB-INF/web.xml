@@ -12,6 +12,7 @@
 		<welcome-file>agendamento.xhtml</welcome-file>
 	</welcome-file-list>
 
+	<!-- Nível do Projeto -->
 	<context-param>
 		<param-name>javax.faces.PROJECT_STAGE</param-name>
 		<param-value>Development</param-value>

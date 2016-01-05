@@ -12,6 +12,19 @@ Construindo na sua máquina
 
 Se você quiser ver a aplicação na sua máquina é somente necessário importar como projeto MAVEN na sua IDE.
 
+```xml
+<properties>
+		<java.version>1.8</java.version>
+		<maven.plugin.version>3.1</maven.plugin.version>
+		<javax.servlet.version>3.0.1</javax.servlet.version>
+		<jsf.api.version>2.2.9</jsf.api.version>
+		<jsf.impl.version>2.2.12</jsf.impl.version>
+		<jstl.version>1.2</jstl.version>
+		<junit.version>4.12</junit.version>
+	</properties>
+```
+
+
 Técnologias utilizadas
 ==========================
 
