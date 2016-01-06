@@ -31,4 +31,5 @@ Técnologias utilizadas
 - JSF 2 (http://www.oracle.com/technetwork/java/javaee/javaserverfaces-139869.html)
 - Maven 3 (https://maven.apache.org/docs/3.0/release-notes.html)
 - JUnit 4 (http://junit.org)
+- Java 8 (https://www.java.com/pt_BR/download/faq/java8.xml)
 
