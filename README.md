@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/andrelemos2/agendamento-financeiro.svg?branch=master)](https://travis-ci.org/andrelemos2/agendamento-financeiro)
+
 Agendamento Financeiro (Transferência Bancária)
 ==========================
 Simples Projeto Agendamento Financeiro (Transferência Bancária)
